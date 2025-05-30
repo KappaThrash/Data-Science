@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+y = 1
 st.set_page_config(layout='wide')
 
 df_reviews = pd.read_csv('customerreviews.csv')
@@ -26,4 +27,8 @@ col1.metric(f'Preço: $', book_price, border=True)
 col2.metric(f'Avaliação: ', book_rating, border=True)
 col3.metric(f'Ano de publicação: ', book_year, border=True)
 
-st.markdown(df_reviews_f)
+for x in df_reviews_f['review description']:
+    st.header(f'Revisão {y}')
+    st.markdown(x)
+    st.divider()
+    y += 1
